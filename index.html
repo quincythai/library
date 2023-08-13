@@ -18,17 +18,17 @@
         <form id="book-form">
             <div class="input-container">
                 <label for="book_author">Author</label>
-                <input type="text" id="book_author" name="author" minlength="1" maxlength="100" required>
+                <input type="text" id="book_author" name="author" minlength="1" maxlength="100" autocomplete="off" required>
             </div>
            
             <div class="input-container">
                  <label for="book_title">Title</label>
-                <input type="text" id="book_title" name="title" minlength="1" maxlength="100" required>
+                <input type="text" id="book_title" name="title" minlength="1" maxlength="100" autocomplete="off" required>
             </div>
            
             <div class="input-container">
                 <label for="book_num_pages">Number of Pages</label>
-                <input type="number" id="book_num_pages" name="numPages" min="1" required>
+                <input type="number" id="book_num_pages" name="numPages" min="1" max="9999" title="Please enter the number of pages in this book (1-9999)" required>
             </div>
             
             <div class="input-container">
@@ -37,9 +37,9 @@
             </div>
 
             <div class="button-container">
-                <button value="cancel" formmethod="dialog">Cancel</button>
-                <button id="confirmBtn" value="default">Confirm</button>
-                <button id="resetBtn">Reset</button>
+                <button id="cancelBtn">Cancel</button>
+                <button type="submit" id="confirmBtn">Confirm</button>
+                <button type="reset">Reset</button>
             </div>
         </form>
     </dialog>

@@ -21,23 +21,20 @@ function addBookToLibrary(bookObj) {
     myLibrary.push(bookObj);
     displayLibrary();
 }
-
+ 
 // loops through library and displays each book in a table or "card"
 function displayLibrary() {
-    // First, clear library div
     libraryDiv.innerHTML = "";
 
     myLibrary.forEach(book => {
-        let card = document.createElement('div'); // card container
-        card.classList.add('book-card'); // add class 'book-card' with predefined style in stylesheet
+        let card = document.createElement('div');
+        card.classList.add('book-card');
 
         let title = document.createElement('h4');
         title.textContent = book.title;
 
         let author = document.createElement('p');
         author.textContent = `By: ${book.author}`;
-        // notice we're altering textContent
-        // equivalent to <p>Pages: ###</p>
 
         let numPages = document.createElement('p');
         numPages.textContent = `Number of Pages: ${book.numPages}`; 
@@ -45,13 +42,11 @@ function displayLibrary() {
         let completed = document.createElement('p');
         completed.textContent = `Completed: ${book.completed}`;
 
-        // Attach all our html elements to the card
         card.appendChild(title);
         card.appendChild(author);
         card.appendChild(numPages);
         card.appendChild(completed)
 
-        // Finally, add the entire completed card to the libraryContainer
         libraryDiv.appendChild(card);
     });
 }
@@ -67,17 +62,25 @@ const bookFormDialog = document.getElementById('book-form-dialog');
 addBookButton.addEventListener('click', () => {
     bookFormDialog.showModal();
 });
+
 const confirmBtn = document.getElementById('confirmBtn');
-confirmBtn.addEventListener('click', (event) => {
+const form = document.getElementById('book-form');
+form.addEventListener('submit', (event) => {
     event.preventDefault(); // don't want to submit the form, instead want to create an object with it
     
     const author = document.getElementById('book_author').value;
     const title = document.getElementById('book_title').value;
     const numPages = document.getElementById('book_num_pages').value;
-    const bookCompleted = document.getElementById('book_isCompleted').value;
+    const bookCompleted = document.getElementById('book_isCompleted').checked;
 
     const book = new Book(author, title, numPages, bookCompleted);
     addBookToLibrary(book);
-
+    form.reset();
     bookFormDialog.close();
-})
+});
+
+const cancelBtn = document.getElementById('cancelBtn');
+cancelBtn.addEventListener('click', () => {
+    form.reset();
+    bookFormDialog.close();
+});
