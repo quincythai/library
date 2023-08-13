@@ -55,9 +55,33 @@ function displayLibrary() {
     });
 }
 
-addBookButton.addEventListener('click', addBookToLibrary)
-
 /* On load up, display the library 
 2nd argument not a function otherwise this would invoke it first
 and pass its return value (which is null) to the addEventListener */
 document.addEventListener('DOMContentLoaded', displayLibrary);
+
+/* On click, prompts form asking for title, author, pages, completed to create an object. Then, we must push this object to our myLibrary array */
+
+const bookFormDialog = document.getElementById('book-form-dialog');
+
+// .showModal will display dialog (the interactive component popup)
+addBookButton.addEventListener('click', () => {
+    bookFormDialog.showModal();
+});
+
+// Alternatively, you could do this, but I chose anonymous function because pretty straightforward.
+// function openBookFormDialog() {
+//     bookFormDialog.showModal();
+// }
+
+bookFormDialog.addEventListener('close', (e) => {
+    
+})
+
+
+// addBookButton.addEventListener('click', openBookFormDialog);
+const confirmBtn = bookFormDialog.getElementById('confirmBtn');
+confirmBtn.addEventListener('click', (event) => {
+    event.preventDefault(); // don't want to submit the fake form
+    // have to send the select box value here
+})

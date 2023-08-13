@@ -12,3 +12,9 @@ body {
     border-radius: 20px;
     margin: 20px;
 }
+
+.book-form {
+    display: flex;
+    flex-direction: column;
+}
+

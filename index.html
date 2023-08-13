@@ -12,6 +12,37 @@
     <div class="library" id="library">
         <!-- Dynamically insert cards using JS DOM -->
     </div>
+
+    <!-- A modal dialog containing a form -->
+    <dialog id="book-form-dialog">
+        <form id="book-form">
+            <div class="input-container">
+                <label for="book_author">Author</label>
+                <input type="text" id="book_author" name="author" minlength="1" maxlength="100" required>
+            </div>
+           
+            <div class="input-container">
+                 <label for="book_title">Title</label>
+                <input type="text" id="book_title" name="title" minlength="1" maxlength="100" required>
+            </div>
+           
+            <div class="input-container">
+                <label for="book_num_pages">Number of Pages</label>
+                <input type="number" id="book_num_pages" name="numPages" min="1" required>
+            </div>
+            
+            <div class="input-container">
+                <label for="book_isCompleted">Have you finished reading this book?</label>
+                <input type="checkbox" id="book_isCompleted" name="bookCompleted">
+            </div>
+
+            <div class="button-container">
+                <button value="cancel" formmethod="dialog">Cancel</button>
+                <button id="confirmBtn" value="default">Confirm</button>
+                <button id="resetBtn">Reset</button>
+            </div>
+        </form>
+    </dialog>
     <script src="script.js"></script>
 </body>
 </html>
