@@ -1,0 +1,12 @@
+addBookButton.addEventListener('click', () => {
+    bookFormDialog.showModal();
+});
+
+// Alternatively, you could do this, but I chose anonymous function because pretty straightforward.
+// function openBookFormDialog() {
+//     bookFormDialog.showModal();
+// }
+
+/* 2nd argument not a function otherwise this would invoke it first
+and pass its return value (which is null) to the addEventListener */
+document.addEventListener('DOMContentLoaded', displayLibrary);

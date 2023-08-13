@@ -19,6 +19,7 @@ function Book(author, title, numPages, completed) {
 
 function addBookToLibrary(bookObj) {
     myLibrary.push(bookObj);
+    displayLibrary();
 }
 
 // loops through library and displays each book in a table or "card"
@@ -55,9 +56,7 @@ function displayLibrary() {
     });
 }
 
-/* On load up, display the library 
-2nd argument not a function otherwise this would invoke it first
-and pass its return value (which is null) to the addEventListener */
+/* On load up, display the library */
 document.addEventListener('DOMContentLoaded', displayLibrary);
 
 /* On click, prompts form asking for title, author, pages, completed to create an object. Then, we must push this object to our myLibrary array */
@@ -68,20 +67,17 @@ const bookFormDialog = document.getElementById('book-form-dialog');
 addBookButton.addEventListener('click', () => {
     bookFormDialog.showModal();
 });
-
-// Alternatively, you could do this, but I chose anonymous function because pretty straightforward.
-// function openBookFormDialog() {
-//     bookFormDialog.showModal();
-// }
-
-bookFormDialog.addEventListener('close', (e) => {
-    
-})
-
-
-// addBookButton.addEventListener('click', openBookFormDialog);
-const confirmBtn = bookFormDialog.getElementById('confirmBtn');
+const confirmBtn = document.getElementById('confirmBtn');
 confirmBtn.addEventListener('click', (event) => {
-    event.preventDefault(); // don't want to submit the fake form
-    // have to send the select box value here
+    event.preventDefault(); // don't want to submit the form, instead want to create an object with it
+    
+    const author = document.getElementById('book_author').value;
+    const title = document.getElementById('book_title').value;
+    const numPages = document.getElementById('book_num_pages').value;
+    const bookCompleted = document.getElementById('book_isCompleted').value;
+
+    const book = new Book(author, title, numPages, bookCompleted);
+    addBookToLibrary(book);
+
+    bookFormDialog.close();
 })
